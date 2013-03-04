@@ -48,101 +48,42 @@
 	<key>Creator</key>
 	<string>Aleatha Parker-Wood</string>
 	<key>DisplayScale</key>
-	<string>1 0/72 in = 1 0/72 in</string>
+	<string>1 0/72 in = 1.0000 in</string>
 	<key>GraphDocumentVersion</key>
 	<integer>8</integer>
 	<key>GraphicsList</key>
 	<array>
 		<dict>
-			<key>Bounds</key>
-			<string>{{99.029820766946926, 107.46841640131993}, {100.62246704101562, 14.5032958984375}}</string>
 			<key>Class</key>
-			<string>ShapedGraphic</string>
+			<string>LineGraphic</string>
 			<key>Head</key>
 			<dict>
 				<key>ID</key>
 				<integer>31</integer>
 			</dict>
 			<key>ID</key>
-			<integer>33</integer>
-			<key>Rotation</key>
-			<real>317.82980346679688</real>
-			<key>Shape</key>
-			<string>AdjustableArrow</string>
-			<key>ShapeData</key>
-			<dict>
-				<key>ratio</key>
-				<real>0.50000017881393433</real>
-				<key>width</key>
-				<real>20.000001907348633</real>
-			</dict>
+			<integer>37</integer>
+			<key>Points</key>
+			<array>
+				<string>{112.05268160469655, 148.49575941603575}</string>
+				<string>{186.62942301256899, 80.944363213252743}</string>
+			</array>
 			<key>Style</key>
 			<dict>
-				<key>fill</key>
-				<dict>
-					<key>Color</key>
-					<dict>
-						<key>b</key>
-						<string>0.4</string>
-						<key>g</key>
-						<string>0.4</string>
-						<key>r</key>
-						<string>0.4</string>
-					</dict>
-					<key>FillType</key>
-					<integer>2</integer>
-					<key>GradientAngle</key>
-					<real>90</real>
-					<key>GradientColor</key>
-					<dict>
-						<key>b</key>
-						<string>0</string>
-						<key>g</key>
-						<string>0</string>
-						<key>r</key>
-						<string>0</string>
-					</dict>
-					<key>MiddleColor</key>
-					<dict>
-						<key>b</key>
-						<string>0.550011</string>
-						<key>g</key>
-						<string>0.550011</string>
-						<key>r</key>
-						<string>0.550011</string>
-					</dict>
-					<key>MiddleFraction</key>
-					<real>0.4523809552192688</real>
-					<key>TrippleBlend</key>
-					<string>YES</string>
-				</dict>
-				<key>shadow</key>
-				<dict>
-					<key>Color</key>
-					<dict>
-						<key>a</key>
-						<string>0.4</string>
-						<key>b</key>
-						<string>0</string>
-						<key>g</key>
-						<string>0</string>
-						<key>r</key>
-						<string>0</string>
-					</dict>
-					<key>ShadowVector</key>
-					<string>{0, 2}</string>
-				</dict>
 				<key>stroke</key>
 				<dict>
-					<key>Color</key>
-					<dict>
-						<key>b</key>
-						<string>0.0980392</string>
-						<key>g</key>
-						<string>0.0980392</string>
-						<key>r</key>
-						<string>0.0980392</string>
-					</dict>
+					<key>GapRatio</key>
+					<real>0.5</real>
+					<key>HeadArrow</key>
+					<string>FilledArrow</string>
+					<key>Legacy</key>
+					<true/>
+					<key>LineType</key>
+					<integer>1</integer>
+					<key>TailArrow</key>
+					<string>0</string>
+					<key>Width</key>
+					<real>4</real>
 				</dict>
 			</dict>
 			<key>Tail</key>
@@ -150,101 +91,77 @@
 				<key>ID</key>
 				<integer>28</integer>
 			</dict>
-			<key>TextRelativeArea</key>
-			<string>{{0.125, 0.25}, {0.75, 0.5}}</string>
-			<key>isConnectedShape</key>
-			<true/>
 		</dict>
 		<dict>
-			<key>Bounds</key>
-			<string>{{59.00001716613771, 103.24835273855579}, {51.999965667724609, 14.5032958984375}}</string>
 			<key>Class</key>
-			<string>ShapedGraphic</string>
+			<string>LineGraphic</string>
+			<key>Head</key>
+			<dict>
+				<key>ID</key>
+				<integer>28</integer>
+			</dict>
+			<key>ID</key>
+			<integer>36</integer>
+			<key>Points</key>
+			<array>
+				<string>{85.002123879881424, 300.00000001097891}</string>
+				<string>{85.007389937215592, 209.50001725694557}</string>
+			</array>
+			<key>Style</key>
+			<dict>
+				<key>stroke</key>
+				<dict>
+					<key>GapRatio</key>
+					<real>0.5</real>
+					<key>HeadArrow</key>
+					<string>FilledArrow</string>
+					<key>Legacy</key>
+					<true/>
+					<key>LineType</key>
+					<integer>1</integer>
+					<key>TailArrow</key>
+					<string>0</string>
+					<key>Width</key>
+					<real>4</real>
+				</dict>
+			</dict>
+			<key>Tail</key>
+			<dict>
+				<key>ID</key>
+				<integer>29</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>Class</key>
+			<string>LineGraphic</string>
 			<key>Head</key>
 			<dict>
 				<key>ID</key>
 				<integer>30</integer>
 			</dict>
 			<key>ID</key>
-			<integer>32</integer>
-			<key>Rotation</key>
-			<real>270</real>
-			<key>Shape</key>
-			<string>AdjustableArrow</string>
-			<key>ShapeData</key>
-			<dict>
-				<key>ratio</key>
-				<real>0.50000017881393433</real>
-				<key>width</key>
-				<real>20.000001907348633</real>
-			</dict>
+			<integer>35</integer>
+			<key>Points</key>
+			<array>
+				<string>{84.999988214031404, 136.49998201573442}</string>
+				<string>{84.999988214031404, 84.50001798426392}</string>
+			</array>
 			<key>Style</key>
 			<dict>
-				<key>fill</key>
-				<dict>
-					<key>Color</key>
-					<dict>
-						<key>b</key>
-						<string>0.4</string>
-						<key>g</key>
-						<string>0.4</string>
-						<key>r</key>
-						<string>0.4</string>
-					</dict>
-					<key>FillType</key>
-					<integer>2</integer>
-					<key>GradientAngle</key>
-					<real>90</real>
-					<key>GradientColor</key>
-					<dict>
-						<key>b</key>
-						<string>0</string>
-						<key>g</key>
-						<string>0</string>
-						<key>r</key>
-						<string>0</string>
-					</dict>
-					<key>MiddleColor</key>
-					<dict>
-						<key>b</key>
-						<string>0.550011</string>
-						<key>g</key>
-						<string>0.550011</string>
-						<key>r</key>
-						<string>0.550011</string>
-					</dict>
-					<key>MiddleFraction</key>
-					<real>0.4523809552192688</real>
-					<key>TrippleBlend</key>
-					<string>YES</string>
-				</dict>
-				<key>shadow</key>
-				<dict>
-					<key>Color</key>
-					<dict>
-						<key>a</key>
-						<string>0.4</string>
-						<key>b</key>
-						<string>0</string>
-						<key>g</key>
-						<string>0</string>
-						<key>r</key>
-						<string>0</string>
-					</dict>
-					<key>ShadowVector</key>
-					<string>{0, 2}</string>
-				</dict>
 				<key>stroke</key>
 				<dict>
-					<key>Color</key>
-					<dict>
-						<key>b</key>
-						<string>0.0980392</string>
-						<key>g</key>
-						<string>0.0980392</string>
-						<key>r</key>
-						<string>0.0980392</string>
-					</dict>
+					<key>GapRatio</key>
+					<real>0.5</real>
+					<key>HeadArrow</key>
+					<string>FilledArrow</string>
+					<key>Legacy</key>
+					<true/>
+					<key>LineType</key>
+					<integer>1</integer>
+					<key>TailArrow</key>
+					<string>0</string>
+					<key>Width</key>
+					<real>4</real>
 				</dict>
 			</dict>
 			<key>Tail</key>
@@ -252,10 +169,6 @@
 				<key>ID</key>
 				<integer>28</integer>
 			</dict>
-			<key>TextRelativeArea</key>
-			<string>{{0.125, 0.25}, {0.75, 0.5}}</string>
-			<key>isConnectedShape</key>
-			<true/>
 		</dict>
 		<dict>
 			<key>Bounds</key>
@@ -331,108 +244,6 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{39.750007629394545, 247.49836104325038}, {90.499984741210938, 14.5032958984375}}</string>
-			<key>Class</key>
-			<string>ShapedGraphic</string>
-			<key>Head</key>
-			<dict>
-				<key>ID</key>
-				<integer>28</integer>
-			</dict>
-			<key>ID</key>
-			<integer>9</integer>
-			<key>Rotation</key>
-			<real>270</real>
-			<key>Shape</key>
-			<string>AdjustableArrow</string>
-			<key>ShapeData</key>
-			<dict>
-				<key>ratio</key>
-				<real>0.50000017881393433</real>
-				<key>width</key>
-				<real>20.000001907348633</real>
-			</dict>
-			<key>Style</key>
-			<dict>
-				<key>fill</key>
-				<dict>
-					<key>Color</key>
-					<dict>
-						<key>b</key>
-						<string>0.4</string>
-						<key>g</key>
-						<string>0.4</string>
-						<key>r</key>
-						<string>0.4</string>
-					</dict>
-					<key>FillType</key>
-					<integer>2</integer>
-					<key>GradientAngle</key>
-					<real>90</real>
-					<key>GradientColor</key>
-					<dict>
-						<key>b</key>
-						<string>0</string>
-						<key>g</key>
-						<string>0</string>
-						<key>r</key>
-						<string>0</string>
-					</dict>
-					<key>MiddleColor</key>
-					<dict>
-						<key>b</key>
-						<string>0.550011</string>
-						<key>g</key>
-						<string>0.550011</string>
-						<key>r</key>
-						<string>0.550011</string>
-					</dict>
-					<key>MiddleFraction</key>
-					<real>0.4523809552192688</real>
-					<key>TrippleBlend</key>
-					<string>YES</string>
-				</dict>
-				<key>shadow</key>
-				<dict>
-					<key>Color</key>
-					<dict>
-						<key>a</key>
-						<string>0.4</string>
-						<key>b</key>
-						<string>0</string>
-						<key>g</key>
-						<string>0</string>
-						<key>r</key>
-						<string>0</string>
-					</dict>
-					<key>ShadowVector</key>
-					<string>{0, 2}</string>
-				</dict>
-				<key>stroke</key>
-				<dict>
-					<key>Color</key>
-					<dict>
-						<key>b</key>
-						<string>0.0980392</string>
-						<key>g</key>
-						<string>0.0980392</string>
-						<key>r</key>
-						<string>0.0980392</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>Tail</key>
-			<dict>
-				<key>ID</key>
-				<integer>29</integer>
-			</dict>
-			<key>TextRelativeArea</key>
-			<string>{{0.125, 0.25}, {0.75, 0.5}}</string>
-			<key>isConnectedShape</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>Bounds</key>
 			<string>{{49, 300.5}, {72, 72}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
@@ -503,7 +314,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2013-03-04 20:17:02 +0000</string>
+	<string>2013-03-04 22:36:10 +0000</string>
 	<key>Modifier</key>
 	<string>Aleatha Parker-Wood</string>
 	<key>NotesVisible</key>

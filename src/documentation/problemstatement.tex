@@ -35,53 +35,62 @@ The data we're working with is from the LASR system.  It will look something lik
 
 It's kind of obtuse, but you can see that there's a uid and a pid (user and process). There's a UNIX time stamp (like 962559821.223242), a system call name (like unlink), and then some arguments, and a return value.
 \section{Provenance graphs}
-A provenance graph has nodes, edges, and "annotations" (basically extra info). There are two kinds of nodes, processes and files. Edges connect files to processes, or vice versa, and are directed in order of data flow. So, for instance, if a process opens a file and reads it, then the edge goes from the file, to the process, because that's the direction the data went. For a write, the edge goes the other way, from the process to the file. If a process starts another process, we can think of that as data too (although it's a bit of a stretch), so the edge goes from the parent process to the child process. So here's some example graphs:
-
+A provenance graph has nodes, edges, and ``annotations" (basically extra info). There are two kinds of nodes, processes and files. Edges connect files to processes, or vice versa, and are directed in order of dependency. So, for instance, if a process opens a file and reads it, then the edge goes from the process to the file, because the process ``depends" on the file (See Figure \ref {fig:read}). For a write, the edge goes the other way, from the file to the process (Figure \ref{fig:write}). If a process starts another process, then the child depends on the parent, so the edge goes from the child process to the parent process (Figure \ref{fig:spawnreadwrite}).
 %USE SUBFIGURE
-\begin{figure}[h!]
-\subfloat[Process reads file][Process reads file]{
-\includegraphics[width=0.4\textwidth]{figs/readfile}
-\label{fig:subfig1}}
-
-
-\subfloat[Process writes file][Process writes file]{
-\includegraphics[width=0.4\textwidth]{figs/writefile}
-\label{fig:subfig2}}
-
-
-\subfloat[Process starts another process which reads one file, and then writes another.][Process starts another process which reads one file, and then writes another.]{
-\includegraphics[width=0.4\textwidth]{figs/spawnreadwrite}
-\label{fig:subfig3}}
-\end{figure}
-
 %\begin{figure}[h!]
-%  \centering
-%    \includegraphics[width=.5\textwidth]{figs/readfile}
-%      \caption{Process reads file.}
-%      \label{fig:read}
-%\end{figure}
-
-%\begin{figure}[h!]
-%  \centering
-%    \includegraphics[width=.5\textwidth]{figs/writefile}
-%      \caption{Process writes file.}
-%      \label{fig:write}
-%\end{figure}
+%\subfloat[Process reads file][Process reads file]{
+%\includegraphics[width=0.25\textwidth]{figs/readfile}
+%\label{fig:subfig1}}
 
 %
-%\begin{figure}[h!]
-%  \centering
-%    \includegraphics[width=.5\textwidth]{figs/spawnreadwrite}
-%      \caption{Process starts another process which reads one file, and then writes another.}
-%      \label{fig:spawnreadwrite}
+%\subfloat[Process writes file][Process writes file]{
+%\includegraphics[width=0.25\textwidth]{figs/writefile}
+%\label{fig:subfig2}}
+
+%
+%\subfloat[Process starts another process which reads one file, and then writes another.][Process starts another process which reads one file, and then writes another.]{
+%\includegraphics[width=0.25\textwidth]{figs/spawnreadwrite}
+%\label{fig:subfig3}}
 %\end{figure}
 
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=.25\textwidth]{figs/readfile}
+      \caption{Process reads file.}
+      \label{fig:read}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=.25\textwidth]{figs/writefile}
+      \caption{Process writes file.}
+      \label{fig:write}
+\end{figure}
+
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=.25\textwidth]{figs/spawnreadwrite}
+      \caption{Process starts another process which reads one file, and then writes another.}
+      \label{fig:spawnreadwrite}
+\end{figure}
 
 
 
-However, that's not quite as much information as we need for full causality. So we add annotations, in the form of users, time stamps, and versions. When a file is changed, we declare that to be a new version of that file, so we might have results.txt(v1), results.txt(v2), etc. That way we can say which version of a file another file got data from, and we know which processes contributed up to that point.
+
+However, that's not quite as much information as we need for full causality. So we add annotations, in the form of users, time stamps, and versions. When a file is changed, we declare that to be a new version of that file, so we might have results.txt(v1), results.txt(v2), etc. That way we can say which version of a file another file got data from, and we know which processes contributed up to that point.  (And it breaks cycles which would otherwise be very confusing!)  I have an example in Figure \ref{fig:cycle}.
 
 Example graph:
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=.4\textwidth]{figs/cycle}
+      \caption{Process reads file.}
+      \label{fig:cycle}
+\end{figure}
+
+This last is the kind of graph we're going to be generating.  We'll take a list of system calls, and use it to figure out the dependency structure of files and processes. We'll infer the existence of processes based on their fork and exec calls, and then use their opens, closes, reads, and writes to infer the existence of files.  We'll annotate every process with the name of its owner, and every time a file gets written, we'll create a new ``version" of that node in the graph (but leave it linked to the first version, so we know they're all related.)  Every edge in the graph will have a timestamp.
+
+
 
 \end{document}
 
