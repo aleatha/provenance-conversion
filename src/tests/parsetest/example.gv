@@ -1,0 +1,23 @@
+digraph "unix" {
+  rankdir=BT;
+	graph [	fontname = "Helvetica-Oblique",
+		fontsize = 36,
+		label = "\n\n\n\nExample Provenance Graph",
+		size = "6,6" ];
+	node [	shape = rectangle,
+		color = white,
+		style = filled,
+		fontname = "Helvetica-Outline" ];
+	"PID470_1362438507.437433" [label = "PID470\n/bin/vi\nUser 1", color=darkolivegreen3];
+	"~/test.txt" [label = "~/test.txt\nVersion 1", shape = circle, color=lightsteelblue1];
+  "PID470_1362438507.437433" -> "~/test.txt" [label = "3/4/13 2:45 pm"];
+  
+  "~/test2.txt" [label = "~/test2.txt\nVersion 1", shape = circle, color=lightsteelblue1];
+  "~/test2.txt" -> "PID470_1362438507.437433" [label = "3/4/13 2:47 pm"];
+  
+  "PID483_1362438687.437235" [label = "PID483\n/bin/cp\nUser 1", color=darkolivegreen3];
+  "PID483_1362438687.437235" -> "~/test2.txt" [label = "3/4/13 2:48 pm"];
+  
+  "~/test.txtv2" [label = "~/test.txt\nVersion 2", shape = circle, color=lightsteelblue1];
+  "~/test.txtv2" -> "PID483_1362438687.437235" [label = "3/4/13 2:50 pm"];
+}
