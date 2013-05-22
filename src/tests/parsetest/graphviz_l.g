@@ -13,10 +13,14 @@ options {
 
 class graphviz_l extends Lexer;
 options {
-	k=2;
+	k=3;
 	exportVocab=graphViz;
 	charVocabulary = '\3'..'\377';
 }
+
+tokens {
+	"digraph";
+	}
 
 WS	:	(' '
 	|	'\t'
@@ -43,25 +47,28 @@ EDGE: "->"
   
 COMMA: ','
   ;  
-  
+    
 EQUALS: '='
   ;  
   
 SEMICOLON: ';'
   ;  
 
+//UNDERSCORE: '_'
+//	;
 
-GRAPHTYPE: "digraph"
-  ;
+
+//GRAPHTYPE: "digraph"
+//  ;
 
 
 CHAR_LITERAL
 	:	'\'' (ESC|~'\'') '\''
 	;
 
-STRING_LITERAL
-	:	'"' (ESC|~'"')* '"'
-	;
+//STRING_LITERAL
+//	:	'"' (ESC|~'"')* '"'
+//	;
 
 
 protected
@@ -97,8 +104,14 @@ ESC	:	'\\'
 		)
 	;
 
-NODENAME: "PID"('0'..'9')+'_'('0'..'9')+'.'('0'..'9')+
-  ;
 
-BARESTRING : ('a'..'z'|'A'..'Z'|'_'|'0'..'9') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*
+//NODENAME: "PID" //('0'..'9')+'_'('0'..'9')+'.'('0'..'9')+
+//  ;
+
+NUM_LITERAL:
+  ('0'..'9')+('.'('0'..'9'))?;
+
+STRING_LITERAL 
+	: ('a'..'z'|'A'..'Z')('a'..'z'|'A'..'Z'|'_'|'0'..'9')*
+	|	'"'(ESC|~'"')*'"'
   ;

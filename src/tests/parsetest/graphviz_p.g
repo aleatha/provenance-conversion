@@ -35,15 +35,15 @@ header "graphviz_p.__main__" {
    print "Tree: " + ast.toStringTree()
    print "List: " + ast.toStringList()
    print "Node: " + ast.toString()
-   print "visit>>"
-   visitor = Visitor()
-   visitor.visit(ast);
-   print "visit<<"
+   #print "visit>>"
+   #visitor = Visitor()
+   #visitor.visit(ast);
+   #print "visit<<"
 }
 
 options {
 	mangleLiteralPrefix = "TK_";
-    language=Python;
+  language=Python;
 }
 
 
@@ -51,47 +51,41 @@ class graphviz_p extends Parser;
 options {
 	importVocab=graphViz;
 	buildAST = true;
+	k = 2;
 }
 
 
 diagram
-  : GRAPHTYPE optionstring LCURLY (statement)* RCURLY EOF
+  : TK_digraph optionname LCURLY (statement SEMICOLON)* RCURLY EOF
   ;
   
 statement
-  : setvariable SEMICOLON
-  | defnode SEMICOLON
-  | setdefaults SEMICOLON
-  | defedge SEMICOLON
-  ;
-  
-setvariable
-  : optionstring EQUALS optionstring
-  ;
-  
+    :  STRING_LITERAL setedge
+    | STRING_LITERAL setvariable
+    ;
+
+setedge
+	: EDGE STRING_LITERAL (optionclause)?
+	;
+	
 optionclause
   : LSQUARE optionlist RSQUARE
   ;
   
 optionlist
-  : setvariable COMMA optionlist
-  | setvariable
+  : STRING_LITERAL setvariable (COMMA STRING_LITERAL setvariable)*
   ;
 
-defnode
-  : NODENAME (optionclause)?
+setvariable
+  : EQUALS optionval
+  | optionclause
   ;
   
-setdefaults
-  : optionstring (optionclause)?
-  ;
-
-
-defedge
-  : NODENAME EDGE NODENAME (optionclause)?
-  ;
-  
- optionstring
+optionname
  	: STRING_LITERAL
- 	| BARESTRING
  	;
+ 	
+optionval
+	: STRING_LITERAL
+	| NUM_LITERAL
+	;
