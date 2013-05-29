@@ -7,6 +7,11 @@
  * Make sure to run antlr.Tool on the lexer.g file first!
  */
  
+header {
+import prov_stats
+
+pnodestore = prov_stats.PNodeStore()
+}
 
 header "graphviz_p.__main__" {
    import graphviz_l
@@ -28,6 +33,14 @@ header "graphviz_p.__main__" {
 
 	for pnode in pnodestore.pnodes.keys():
       print pnode
+      for edge in pnodestore.pnodes[pnode].outedges:
+      	print "  "+edge
+      	
+  analyzer = prov_stats.PGraphAnalyzer(pnodestore)
+  
+  analyzer.calcDegree()
+  analyzer.calcHeights()
+  analyzer.TaPiR()
 
 }
 
@@ -46,14 +59,21 @@ options {
 
 
 diagram
-  : TK_digraph optionname! LCURLY (statement SEMICOLON)* RCURLY EOF
+  : TK_digraph! optionname! LCURLY (statement SEMICOLON)* RCURLY EOF
   ;
   
 statement
-    : STRING_LITERAL EDGE STRING_LITERAL (optionclause!)?
+    : 
+      {fro = self.LT(1).getText()} 
+      STRING_LITERAL EDGE 
+      {
+      to = self.LT(1).getText()
+      pnodestore.insertEdge(fro,to)
+      } 
+      STRING_LITERAL (optionclause!)?
     | STRING_LITERAL! EQUALS! optionval!
     | {"ID" in self.LT(1).getText()}? STRING_LITERAL optionclause!
-    | STRING_LITERAL! optionclause!
+    |  STRING_LITERAL! optionclause!
     ;
 
 //  setedge

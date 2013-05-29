@@ -87,13 +87,13 @@ def main():
       sys.exit(1)
       
    ###show tree
-   print "Tree: " + ast.toStringTree()
-   print "List: " + ast.toStringList()
-   print "Node: " + ast.toString()
-   print "visit>>"
-   visitor = Visitor()
-   visitor.visit(ast);
-   print "visit<<"
+   #print "Tree: " + ast.toStringTree()
+   #print "List: " + ast.toStringList()
+   #print "Node: " + ast.toString()
+   #print "visit>>"
+   #visitor = Visitor()
+   #visitor.visit(ast);
+   #print "visit<<"
 
 if __name__ == "__main__":
    main()
