@@ -3,6 +3,7 @@
 import sys
 import numpy as np
 import math
+import datetime
 
 class PNodeStore:
     
@@ -28,6 +29,7 @@ class PNode:
         self.name = name
         self.inedges = []
         self.outedges = []
+        self.time = datetime.datetime.min
         self.height = 0
 
 class PGraphAnalyzer:
@@ -101,10 +103,7 @@ class PGraphAnalyzer:
         
   
   
-  #First, can we do a simple implementation of our ranking algorithm, and just spit out a ranked list of nodes?
-  #Second, how can we set up good test and train sets on the provenance graph to do access prediction?
-  #We have several different machines, so we can set up an arbitrary threshold of "X% of data, or Y entries, whichever is larger".
-  #How big is big enough?  Do rolling predictions and look for the knee in the curve
+  #First, can we do a simple implementation of our ranking algorithm, and just spit out a ranked list of nodes? Yes, we can.
   def TaPiR(self):
     np.set_printoptions(precision=3, suppress=True)
     alpha = .1
@@ -126,7 +125,7 @@ class PGraphAnalyzer:
 
     #calculate an exponential decay factor for the graph based on max height.
     weights = []
-    l = self.maxHeight/4 #Need to tweak l for appropriate decay rate.
+    l = self.maxHeight/4 #Need to tweak l for appropriate decay rate.  4 is totally a made-up number.
 
     #Now calculate the weights of each of the nodes in the graph
     for node in self.pnodestore.pnodes.values():
@@ -137,16 +136,17 @@ class PGraphAnalyzer:
     weights_matrix = weights_matrix/weight_sum
     print weights_matrix
   
-    #Normalize it to a transition probability matrix with uniform teleport
-    #(Eventually we need to calculate the weighted transitions based on height, but here's the uniform one)
+    #Use the scaled weights to define the teleport probabilities, and generate the transition probability matrix
     rowsums = matrix.sum(axis=1)
     for i in range(size):
       scaling = rowsums.item(i,0)
+      #If there are already links, then scale back the teleports to alpha of the total prob...
       if scaling > 0:
         scaling = (1-alpha)/scaling
         matrix[i] = matrix[i] * scaling
         rescaled_weights = weights_matrix * alpha
         matrix[i] = matrix[i] + rescaled_weights
+      #Otherwise, teleports need to add up to 1.
       else:
         matrix[i] = matrix[i] + weights_matrix
     print matrix
@@ -162,8 +162,12 @@ class PGraphAnalyzer:
     print ranks
  
 
-
+  #Second, how can we set up good test and train sets on the provenance graph to do access prediction?
+  #We have several different machines, so we can set up an arbitrary threshold of "X% of data, or Y entries, whichever is larger".
+  #How big is big enough?  Do rolling predictions and look for the knee in the curve.
+  #Use pearson rank correlation coefficient to discount what the user actually selected relative to how we ranked it
   def AccessPrediction(self):
+    
     pass
 
 
